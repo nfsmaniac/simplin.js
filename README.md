@@ -41,3 +41,4 @@ Conventional libraries might not be easy to learn and use, or they are just way 
     ```js
     console.log(MyApp.locales.get("MSG_HELLO_WORLD");
     ```
+4. Let translators to translate your project. Put all files to the same folder as `en-US.json`, they will be loaded automatically.
