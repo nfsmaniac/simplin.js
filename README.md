@@ -2,7 +2,7 @@
  A simple, tiny Node.js module providing a basic multi-language system — dependency-free.
  
 ## Aim of the project
-The primary goal of this project is to provide bare-basic solution for multi-language feature (app localization), mainly for purposes within smaller Node.js projects.
+A primary goal of this project is to provide bare-basic solution for multi-language feature (app localization), mainly for purposes within smaller Node.js projects.
 Conventional libraries might not be easy to learn and use, or they are just way too complex for a little hobby projects.
 
 ## How to start
@@ -37,7 +37,7 @@ Conventional libraries might not be easy to learn and use, or they are just way 
     console.log(_("MSG_HELLO_WORLD"));
     console.log(_("MSG_NEW_MESSAGE", 3)); // 3 new messages
     ```
-Or, alternatively (without require()) 
-    ```
+    Or, alternatively (without require()) 
+    ```js
     console.log(MyApp.locales.get("MSG_HELLO_WORLD");
     ```
