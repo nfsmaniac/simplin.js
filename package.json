@@ -1,0 +1,41 @@
+{
+  "name": "simplin.js",
+  "version": "1.0.0",
+  "description": "A simple, tiny Node.js module providing a basic multi-language system",
+  "main": "./src/simplin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfsmaniac/simplin.js.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "keywords": [
+    "language",
+    "multi-language",
+    "lingua",
+    "simple",
+    "translation",
+    "locale",
+    "identifier",
+    "string",
+    "provider",
+    "translate",
+    "localisation",
+    "localization",
+    "intl",
+    "localize",
+    "globalize",
+    "i18n",
+    "i10n"
+  ],
+  "author": "nfsmaniac",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nfsmaniac/simplin.js/issues"
+  },
+  "homepage": "https://github.com/nfsmaniac/simplin.js#readme"
+}
