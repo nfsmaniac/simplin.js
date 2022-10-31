@@ -32,17 +32,17 @@ class StringProvider {
   }
 
   _insertArguments = (str, args) => {
-    if (!args) {
+    if (args === null || args === undefined) {
       return str;
     }
     if(Array.isArray(args))
     {
         return str.replace(/{([0-9]+)}|%([0-9]+)/g, function(wholeMatch, firstMatch, secondMatch)   // replace {i} or %i placeholders
-  				{var i = +firstMatch || +secondMatch; return i < args.length ? args[i] : wholeMatch;}
+  				{var i = +(firstMatch || secondMatch); return i < args.length ? args[i] : wholeMatch;}
 			);
     }
 
-    return str.replace(/%[dfis1-9]/, args); // replace %s, %0, etc.
+    return str.replace(/{([dfis0-9]+)}|%([dfis0-9]+)/, args); // replace %s, %0, {s}, etc.
   };
 
   get = (str, ...inputArgs) => {
