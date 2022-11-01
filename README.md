@@ -34,7 +34,7 @@
     class MyApp {
      constructor() {
          this.locales = StringProvider
-                        .load(path.resolve(__dirname, "../resources/locales"))
+                        .load(path.resolve(__dirname, "../resources/locales")) //__dirname is pre-defined by your environment, similar to "pwd"
                         .setDefault("cs"); // you can omit setDefault(), in that case it's defaulted to 'en-US'
      }
     }
