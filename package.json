@@ -1,6 +1,6 @@
 {
   "name": "@nfsmaniac/simplin.js",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A simple, tiny Node.js module providing a basic multi-language system",
   "main": "./src/simplin.js",
   "scripts": {

@@ -25,6 +25,10 @@ function _(str, ...args) {
   return strProvider.get(str, ...args);
 }
 
+function _A_(str, ...args) {
+  return strProvider.getAllTranslated(str, ...args);
+}
+
 class StringProvider {
   constructor() {
 
@@ -81,6 +85,7 @@ class StringProvider {
 
     let pluralCategory = pluralRules[locale].select(args)
     let loadedPluralForm = loaded[pluralCategory];
+    args === 0 && loaded["zero"] ? loadedPluralForm = loaded["zero"] : loadedPluralForm = loaded[pluralCategory]; // prefer "zero" form if explicitly defined (on top of standard)
     if (loadedPluralForm === null || loadedPluralForm === undefined)
     {
       // Translator probably forgot to define the requested plural
@@ -91,6 +96,21 @@ class StringProvider {
 
     return this._insertArguments(loadedPluralForm, args);
   };
+
+  getAllTranslated = (str, ...inputArgs) => {
+
+    const defaultLocaleString = this.get(str, inputArgs);
+    const excludeList = [defaultLocaleString, str];
+    const LocalisedStrings = {};
+
+    Object.keys(locales).forEach(locale => {
+      let loadedString = this.get(str, locale, inputArgs);
+      if(loadedString && !excludeList.includes(loadedString))
+        LocalisedStrings[locale] = loadedString;
+    });
+
+    return [LocalisedStrings, defaultLocaleString];
+  }
 
   load = (localesPath) => {
     [locales, pluralRules] = loadLocales(localesPath);
@@ -110,3 +130,4 @@ const strProvider = new StringProvider();
 
 exports.StringProvider = strProvider;
 exports._ = _;  // _() is shorthand alias for StringProvider.get()
+exports._A_ = _A_;  // _A_() is shorthand alias for StringProvider.getAllTranslated()
