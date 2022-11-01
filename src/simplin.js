@@ -78,12 +78,16 @@ class StringProvider {
     if (Array.isArray(args))  // it's better to cut the string under multiple IDs to avoid any confusion during decision of the plural category
       throw new Error(`Passing multiple arguments to a plural string is not supported: ${str}`);
 
-    const pluralCategory = pluralRules[locale].select(args)
-    const loadedPluralForm = loaded[pluralCategory];
 
-    if(!loadedPluralForm) // Translator probably forgot to define the requested plural
-      return this._insertArguments(locales[this.defaultLocale][str.trim()][pluralRules[this.defaultLocale].select(args)],
-                                  args);  // => return fallback language
+    let pluralCategory = pluralRules[locale].select(args)
+    let loadedPluralForm = loaded[pluralCategory];
+    if (loadedPluralForm === null || loadedPluralForm === undefined)
+    {
+      // Translator probably forgot to define the requested plural
+      pluralCategory = pluralRules[this.defaultLocale].select(args); // return fallback language instead
+      try { loadedPluralForm = locales[this.defaultLocale][str.trim()][pluralCategory] || str; }
+      catch { loadedPluralForm = str; }  // return input ID if default language do not define it either
+    }
 
     return this._insertArguments(loadedPluralForm, args);
   };
