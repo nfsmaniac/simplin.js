@@ -44,7 +44,8 @@
     const { _ } = require("simplin.js");
     ...
     console.log(_("MSG_HELLO_WORLD"));
-    console.log(_("MSG_NEW_MESSAGE", 3)); // 3 new messages
+    console.log(_("MSG_NEW_MESSAGE", "en-US", 3)); // You have 3 new messages.
+    console.log(_("MSG_NEW_MESSAGE", 3)); // Máte 3 nové zprávy.
     ```
     Or, alternatively (without `require()` by referencing the previously initialized object) 
     ```js
